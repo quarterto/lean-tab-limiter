@@ -1,8 +1,13 @@
 const reactToNewTab = async tab => {
-  const tabs = await browser.tabs.query({currentWindow: true})
   const res = await browser.storage.local.get()
   const limit = res['tab-limit'] || defaultOptions['tab-limit']
   const which = res.which || defaultOptions.which
+  const ignorePinned = res.ignorePinned || defaultOptions.ignorePinned
+
+  const tabs = await browser.tabs.query({
+    currentWindow: true,
+    pinned: ignorePinned ? false : undefined
+  })
 
   if (tabs.length > limit) {
     switch(which) {

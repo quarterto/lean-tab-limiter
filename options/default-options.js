@@ -1,4 +1,5 @@
 defaultOptions = {
 	'tab-limit': 6,
-	which: 'newest'
+	which: 'newest',
+	ignorePinned: false
 }
