@@ -3,9 +3,8 @@ async function restoreOptions (event) {
   const form = document.forms.options
   const res = await browser.storage.local.get()
 
-  for(let [key, value] of Object.entries(res)) {
-    form.elements[key].value = value || defaultOptions[key]
-  }
+  form.elements['tab-limit'].value = res['tab-limit'] || defaultOptions['tab-limit']
+  form.elements.which.value = res.which || defaultOptions.which
 }
 
 async function saveOptions (event) {
