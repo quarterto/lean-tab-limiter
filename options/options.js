@@ -12,7 +12,7 @@ async function saveOptions (event) {
   event.preventDefault()
   const form = document.forms.options
   await browser.storage.local.set({
-    limit: form.elements.limit.valueAsNumber || defaultOptions.limit,
+    'tab-limit': form.elements['tab-limit'].valueAsNumber || defaultOptions['tab-limit'],
     which: form.elements.which.value || defaultOptions.which
   })
 }

@@ -1,7 +1,7 @@
 const reactToNewTab = async tab => {
   const tabs = await browser.tabs.query({currentWindow: true})
   const res = await browser.storage.local.get()
-  const limit = res.limit || defaultOptions.limit
+  const limit = res['tab-limit'] || defaultOptions['tab-limit']
   const which = res.which || defaultOptions.which
 
   if (tabs.length > limit) {
