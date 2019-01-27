@@ -7,23 +7,27 @@
 
 <body>
   <form name="options">
-    <label>
-      Max Tab Limit
-      <input type="number" min="1" name="tab-limit" class="browser-style">
-    </label>
-    <label>
-      Tab to close
-      <select name="which" class="browser-style">
-        <option value="newest">Newest</option>
-        <option value="least-recently-used">Least-recently used</option>
-      </select>
-    </label>
-    <label>
-      Ignore pinned
-      <input type="checkbox" name="ignorePinned" class="browser-style">
-    </label>
-    <button id="save-button" class="browser-style">Save</button>
-    <button id="default-button" class="browser-style">Back to Default</button>
+    <div class="panel-section panel-section-formElements">
+      <div class="panel-formElements-item">
+        <label for="tab-limit">Max Tab Limit</label>
+        <input type="number" min="1" name="tab-limit" id="tab-limit" class="browser-style">
+      </div>
+      <div class="panel-formElements-item">
+        <label for="which">Tab to close</label>
+        <select name="which" id="which" class="browser-style">
+          <option value="newest">Newest</option>
+          <option value="least-recently-used">Least-recently used</option>
+        </select>
+      </div>
+      <div class="panel-formElements-item">
+        <label for="ignorePinned">Ignore pinned</label>
+        <input type="checkbox" name="ignorePinned" id="ignorePinned" class="browser-style">
+      </div>
+      <div class="panel-formElements-item">
+        <button id="save-button" class="browser-style">Save</button>
+        <button id="default-button" class="browser-style">Back to Default</button>
+      </div>
+    </div>
   </form>
   <script src="default-options.js"></script>
   <script src="options.js"></script>
