@@ -6,12 +6,22 @@
   </head>
 
 <body>
-  <form>
-      <label>Max Tab Limit</label>
-      <input type="number" id="tab-limit" class="browser-style">
-      <button id="save-button" class="browser-style">Save</button>
-      <button id="default-button" class="browser-style">Back to Default</button>
+  <form name="options">
+    <label>
+      Max Tab Limit
+      <input type="number" min="1" name="limit" class="browser-style">
+    </label>
+    <label>
+      Tab to close
+      <select name="which">
+        <option value="newest">Newest</option>
+        <option value="least-recently-used">Least-recently used</option>
+      </select>
+    </label>
+    <button id="save-button" class="browser-style">Save</button>
+    <button id="default-button" class="browser-style">Back to Default</button>
   </form>
+  <script src="default-options.js"></script>
   <script src="options.js"></script>
 </body>
 

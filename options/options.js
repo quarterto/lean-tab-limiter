@@ -1,17 +1,24 @@
-async function restoreOptions () {
-  const res = await browser.storage.local.get('tab-limit')
-  document.querySelector("#tab-limit").value = res['tab-limit'] || browser.runtime.getManifest().DEFAULT_TAB_LIMIT
+async function restoreOptions (event) {
+  event.preventDefault()
+  const form = document.forms.options
+  const res = await browser.storage.local.get()
+
+  for(let [key, value] of Object.entries(res)) {
+    form.elements[key].value = value || defaultOptions[key]
+  }
 }
 
-async function saveOptions () {
-  const newValue = document.querySelector("#tab-limit").value
+async function saveOptions (event) {
+  event.preventDefault()
+  const form = document.forms.options
   await browser.storage.local.set({
-    'tab-limit': (!isNaN(newValue) && newValue > 1) ? newValue : browser.runtime.getManifest().DEFAULT_TAB_LIMIT
+    limit: form.elements.limit.valueAsNumber || defaultOptions.limit,
+    which: form.elements.which.value || defaultOptions.which
   })
 }
 
 async function backToDefault () {
-  await browser.storage.local.remove('tab-limit')
+  await browser.storage.local.clear()
 }
 
 document.addEventListener('DOMContentLoaded', restoreOptions)
